@@ -1,0 +1,399 @@
+/* ==========================================================
+   Bank cheki uslubidagi kvitansiya — qog'ozda 190 × 80 mm
+   O'lchamni o'zgartirish: --rc-w va --rc-h
+   ========================================================== */
+
+.rc {
+  --rc-w: 190mm;
+  --rc-h: 80mm;
+  --rc-stub: 47mm;
+  --rc-ink: #0b1a33;
+  --rc-navy: #14336e;
+  --rc-muted: #5b6b86;
+  --rc-line: #7d8aa3;
+  --rc-tint: #eef4fc;
+  --rc-mono: 'JetBrains Mono', Consolas, 'Courier New', monospace;
+
+  position: relative;
+  width: var(--rc-w);
+  height: var(--rc-h);
+  display: grid;
+  grid-template-columns: var(--rc-stub) 5mm 1fr;
+  background: #fff;
+  color: var(--rc-ink);
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  font-size: 8pt;
+  line-height: 1.2;
+  text-align: left;
+  overflow: hidden;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.rc *, .rc *::before, .rc *::after { box-sizing: border-box; }
+
+/* ---------- Umumiy maydon ---------- */
+.rc-f { display: flex; flex-direction: column; min-width: 0; }
+.rc-f__l {
+  font-size: 5.3pt;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--rc-muted);
+  white-space: nowrap;
+}
+.rc-f__v {
+  font-size: 8.4pt;
+  font-weight: 600;
+  padding: 0.4mm 0 0.5mm;
+  border-bottom: 0.2mm solid var(--rc-line);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rc-f__v--strong { font-size: 9.2pt; font-weight: 700; }
+.rc-line { border-bottom: 0.25mm solid var(--rc-ink); height: 5mm; }
+
+/* ---------- TALON ---------- */
+.rc-stub {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1mm;
+  padding: 2.6mm 2.6mm 2mm;
+  border: 0.3mm solid var(--rc-navy);
+  border-radius: 1.2mm;
+  background-color: #fbfdff;
+  background-size: 100% 100%;
+}
+.rc-stub__brand {
+  font-size: 6pt;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--rc-navy);
+}
+.rc-stub__title {
+  font-size: 7.4pt;
+  font-weight: 800;
+  text-transform: uppercase;
+  border-bottom: 0.4mm solid var(--rc-navy);
+  padding-bottom: 0.8mm;
+}
+.rc-stub__no {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 7pt;
+}
+.rc-stub__no b { font-family: var(--rc-mono); font-size: 9pt; }
+.rc-stub__no span { font-weight: 600; color: var(--rc-muted); }
+.rc-stub .rc-f__v { font-size: 7.4pt; }
+.rc-f--wrap .rc-f__v {
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.rc-stub__pair { display: grid; grid-template-columns: 1fr 1fr; gap: 2mm; }
+.rc-stub__sum {
+  display: flex;
+  flex-direction: column;
+  padding: 1mm 1.6mm;
+  border: 0.3mm solid var(--rc-ink);
+  border-radius: 0.8mm;
+  background: var(--rc-tint);
+}
+.rc-stub__sum span { font-size: 5.3pt; font-weight: 700; text-transform: uppercase; color: var(--rc-muted); }
+.rc-stub__sum b { font-family: var(--rc-mono); font-size: 9pt; white-space: nowrap; }
+.rc-stub__sign { margin-top: auto; }
+.rc-stub__sign .rc-line { height: 4mm; }
+.rc-stub__sign small { font-size: 5.8pt; color: var(--rc-muted); }
+.rc-stub__foot {
+  font-size: 5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--rc-muted);
+  text-align: center;
+  border-top: 0.2mm dashed var(--rc-line);
+  padding-top: 0.6mm;
+}
+
+/* ---------- QIRQISH CHIZIG'I ---------- */
+.rc-cut {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.rc-cut::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  border-left: 0.3mm dashed #8a94a8;
+}
+.rc-cut span {
+  position: relative;
+  margin-top: 5mm;
+  background: #fff;
+  font-size: 9pt;
+  line-height: 1;
+  color: #8a94a8;
+  transform: rotate(-90deg);
+  height: 4mm;
+}
+
+/* ---------- ASOSIY QISM ---------- */
+.rc-main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3.2mm 3.4mm 1.6mm;
+  border: 0.5mm double var(--rc-navy);
+  border-width: 1mm;
+  border-radius: 1.2mm;
+  background-color: #fbfdff;
+  background-size: 100% 100%;
+  overflow: hidden;
+}
+.rc-main > * { position: relative; }
+
+/* ramka ichidagi mikromatn (himoya elementi) */
+.rc-micro {
+  position: absolute !important;
+  top: 0.5mm;
+  left: 2mm;
+  right: 2mm;
+  font-size: 3.4pt;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  color: var(--rc-navy);
+  opacity: 0.55;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* suv belgisi */
+.rc-emblem {
+  position: absolute !important;
+  right: 32mm;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44mm;
+  height: 44mm;
+  display: grid;
+  place-items: center;
+  border: 1.4mm solid var(--rc-navy);
+  border-radius: 50%;
+  font-size: 30mm;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--rc-navy);
+  opacity: 0.045;
+  pointer-events: none;
+}
+
+.rc-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3mm;
+}
+.rc-brand { display: flex; align-items: center; gap: 2mm; min-width: 0; }
+.rc-logo {
+  flex: none;
+  width: 8.5mm;
+  height: 8.5mm;
+  display: grid;
+  place-items: center;
+  border-radius: 1.6mm;
+  background: var(--rc-navy);
+  color: #fff;
+  font-weight: 900;
+  font-size: 13pt;
+}
+.rc-brand__text { display: flex; flex-direction: column; min-width: 0; }
+.rc-brand__text b {
+  font-size: 10pt;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--rc-navy);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.rc-brand__text small {
+  font-size: 5.8pt;
+  color: var(--rc-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rc-doc { text-align: right; flex: none; }
+.rc-doc__title {
+  font-size: 11pt;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.rc-doc__no {
+  display: inline-block;
+  margin-top: 0.6mm;
+  padding: 0.5mm 2mm;
+  border: 0.3mm solid var(--rc-ink);
+  border-radius: 0.8mm;
+  background: #fff;
+  font-size: 8pt;
+}
+.rc-doc__no b { font-family: var(--rc-mono); font-size: 10pt; color: #b3131b; letter-spacing: 0.04em; }
+
+.rc-sub {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8mm 2mm;
+  background: var(--rc-navy);
+  color: #fff;
+  font-size: 6.4pt;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 0.6mm;
+}
+.rc-sub b { font-family: var(--rc-mono); font-size: 7.6pt; letter-spacing: 0; }
+
+.rc-body { display: flex; gap: 3mm; align-items: center; }
+.rc-rows { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1.2mm; }
+.rc-qrbox {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4mm;
+  padding: 0.8mm;
+  border: 0.2mm solid var(--rc-line);
+  border-radius: 0.8mm;
+  background: #fff;
+}
+.rc-qrbox span { font-size: 4.6pt; text-transform: uppercase; letter-spacing: 0.08em; color: var(--rc-muted); }
+.rc-row { display: flex; gap: 3mm; }
+.rc-row--grid { display: grid; grid-template-columns: 1fr 21mm 28mm; }
+.rc-w1 { flex: 1 1 0; }
+.rc-w2 { flex: 2 1 0; }
+.rc-w3 { flex: 3 1 0; }
+
+.rc-money { display: flex; gap: 3mm; align-items: stretch; padding-right: 27mm; }
+.rc-money__left { flex: 1; display: flex; flex-direction: column; gap: 1mm; min-width: 0; }
+.rc-amount {
+  display: flex;
+  align-items: center;
+  gap: 2mm;
+  padding: 1.2mm 2.4mm;
+  border: 0.45mm solid var(--rc-ink);
+  border-radius: 0.8mm;
+  background: #fff;
+}
+.rc-amount__l {
+  font-size: 6pt;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding-right: 2mm;
+  border-right: 0.3mm solid var(--rc-line);
+}
+.rc-amount__v {
+  flex: 1;
+  font-family: var(--rc-mono);
+  font-size: 14pt;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.rc-amount__c { font-size: 8pt; font-weight: 800; text-transform: uppercase; }
+.rc-words {
+  font-size: 7pt;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.25;
+  max-height: 2.5em;
+  overflow: hidden;
+  border-bottom: 0.2mm solid var(--rc-line);
+  padding-bottom: 0.4mm;
+}
+.rc-words span { font-style: normal; font-size: 5.3pt; text-transform: uppercase; color: var(--rc-muted); }
+.rc-qr { display: block; width: 17mm; height: 17mm; image-rendering: pixelated; }
+
+.rc-signs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6mm;
+  padding-right: 30mm; /* muhr uchun joy */
+}
+.rc-sign .rc-line { height: 3.6mm; }
+.rc-sign small { font-size: 6pt; color: var(--rc-muted); }
+
+.rc-micr {
+  display: flex;
+  gap: 5mm;
+  align-items: center;
+  font-family: var(--rc-mono);
+  font-size: 7pt;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #26324a;
+  border-top: 0.2mm solid var(--rc-line);
+  padding-top: 0.6mm;
+}
+.rc-micr em {
+  margin-left: auto;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  font-style: normal;
+  font-size: 5pt;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rc-muted);
+}
+
+/* ---------- Muhr o'rni ---------- */
+.rc-main::after {
+  content: 'M.O.';
+  position: absolute;
+  right: 4mm;
+  bottom: 6mm;
+  width: 22mm;
+  height: 22mm;
+  display: grid;
+  place-items: center;
+  border: 0.3mm dashed #9aa6bd;
+  border-radius: 50%;
+  font-size: 7pt;
+  font-weight: 700;
+  color: #9aa6bd;
+}
+
+/* ---------- Saqlanmagan belgisi ---------- */
+.rc-draft {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 26pt;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  color: rgba(179, 19, 27, 0.13);
+  transform: rotate(-12deg);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* ---------- Ekranda sig'dirish ---------- */
+.rc-fit { width: 100%; overflow: hidden; }
+.rc-fit__inner { width: max-content; transform-origin: top left; }
+.rc-fit .rc { box-shadow: 0 6px 24px rgba(15, 23, 42, 0.12); }
+
+@media print {
+  .rc-fit { height: auto !important; overflow: visible; }
+  .rc-fit__inner { transform: none !important; margin: 0 !important; }
+  .rc-fit .rc { box-shadow: none; }
+  .rc-draft { display: none; }
+}
