@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // ⬇️ Railway'dagi BACKEND servisingiz manzilini shu yerga yozing (oxirida / bo'lmasin)
-const PRODUCTION_API = 'https://SIZNING-BACKEND.up.railway.app';
+const PRODUCTION_API = 'https://tashcheckback-production.up.railway.app';
 
 // Kompyuteringizda (npm run dev) → localhost:5000
 // Railway'da → VITE_API_URL berilgan bo'lsa o'sha, bo'lmasa PRODUCTION_API
