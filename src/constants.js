@@ -13,7 +13,6 @@ export const COMPANY_DETAILS = {
 
 // Kassirlar ro'yxati — shu yerda qo'shing / o'zgartiring
 export const KASSIRLAR = [
-  'Atamirzayev Baxtiyor',
-  'Qahharov Abdugani',
-  'Saydullayev Bositxon',
+  'Alisherov Sadriddin',
+  
 ];
